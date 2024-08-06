@@ -1,0 +1,13 @@
+{
+  "tests": [
+    {
+      "name": "Sum of Even Numbers Test",
+      "setup": "",
+      "run": "javac -cp .:junit-platform-console-standalone-1.7.0.jar SumEvenNumbers.java TestSumEvenNumbers.java && java -jar junit-platform-console-standalone-1.7.0.jar --select-class=TestSumEvenNumbers",
+      "input": "",
+      "output": "",
+      "timeout": 10,
+      "points": 10
+    }
+  ]
+}
