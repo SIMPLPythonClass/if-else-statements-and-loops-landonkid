@@ -1,23 +1,26 @@
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import unittest
+from io import StringIO
+import sys
 
-public class TestSumEvenNumbers {
+class TestSumEvenNumbers(unittest.TestCase):
 
-    @Test
-    public void testSum() {
-        // Redirect System.out to capture the program output
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+    def test_sum(self):
+        # Redirect sys.stdout to capture the program output
+        captured_output = StringIO()
+        sys.stdout = captured_output
 
-        // Call the main method of the student's program
-        SumEvenNumbers.main(new String[]{});
+        # Import and call the main function from the SumEvenNumbers module
+        from SumOfEvenNumbers import main
+        main()
 
-        // Expected output
-        String expectedOutput = "Sum of even numbers from 1 to 100: 2550";
+        # Reset redirect
+        sys.stdout = sys.__stdout__
 
-        // Check if the output matches the expected result exactly
-        assertEquals(expectedOutput, outContent.toString().trim());
-    }
-}
+        # Expected output
+        expected_output = 2550
+
+        # Convert captured output to an integer and check if it matches the expected result
+        self.assertEqual(expected_output, int(captured_output.getvalue().strip()))
+
+if __name__ == '__main__':
+    unittest.main()
